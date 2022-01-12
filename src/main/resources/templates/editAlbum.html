@@ -8,8 +8,12 @@
 	<div align="center">	
 		<h1>Edit Album</h1>
 		<br/>
-		<form action="#" th:action="@{/save}" th:object="${album}" method="post">
+		<form action="#" th:action="@{/save}" th:object="${album}" method="post" autocomplete="off">
 			<table border="0" cellpadding="10">
+				<tr>
+					<td>ID:</td>
+					<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
 				<tr>
 					<td>Title:</td>
 					<td><input type="text" th:field="*{title}" /></td>
