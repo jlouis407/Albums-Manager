@@ -1,45 +1,58 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="ISO-8859-1">
-	</head>
-
-	<body>
-		<h1 class="page-title">Albums</h1>
+<head>
+<meta charset="ISO-8859-1">
+<title>Albums Management System</title>
+</head>
+<body>
+<div align="center">	
+	<div>
+		Welcome <b><span>Username</span></b>
+		&nbsp;
+		<i><span>Roles</span></i>
+	</div>
 		
-		<div class="table">
-			<table>
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Artist</th>
-						<th>Genre</th>
-						<th>Label</th>
-						<th>Year</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-						<tr th:each="album:${albums}">
-							<td th:text="${album.title}"></td>
-							<td th:text="${album.artist}"></td>
-							<td th:text="${album.genre}"></td>
-							<td th:text="${album.label}"></td>
-							<td th:text="${album.year}"></td>
-							
-							<td>
-								<a th:href="@{'/edit/' + ${album.id}}">Edit</a>
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<a th:href="@{'/delete/' + ${album.id}}">Delete</a>
-							</td>
-							
-						</tr>
-					</tbody>
-			
-			</table>
-		</div>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	</form>
 	
-	</nav>
-	</body>
+	<h1>Albums Management System</h1>
+	<div>
+		<a href="new">Create New Album</a>
+	</div>
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>Album ID</th>
+				<th>Title</th>
+				<th>Artist</th>
+				<th>Genre</th>
+				<th>Label</th>
+				<th>Year</th>
+				
+				<th>Actions</th>				
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="album : ${listAlbums}">
+				<td th:text="${album.id}">Album ID</td>
+				<td th:text="${album.title}">Title</td>
+				<td th:text="${album.artist}">Artist</td>
+				<td th:text="${album.genre}">Genre</td>
+				<td th:text="${album.label}">Label</td>
+				<td th:text="${album.year}">Year</td>
+				
+				<td>
+					<a th:href="@{'/edit/' + ${album.id}}">Edit</a>			
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${album.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
 </html>
