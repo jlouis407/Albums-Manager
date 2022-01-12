@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+	</head>
+
+	<body>
+		<h1 class="page-title">Albums</h1>
+		
+		<div class="table">
+			<table>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Artist</th>
+						<th>Genre</th>
+						<th>Label</th>
+						<th>Year</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+						<tr th:each="album:${albums}">
+							<td th:text="${album.title}"></td>
+							<td th:text="${album.artist}"></td>
+							<td th:text="${album.genre}"></td>
+							<td th:text="${album.label}"></td>
+							<td th:text="${album.year}"></td>
+							
+							<td>
+								<a th:href="@{'/edit/' + ${album.id}}">Edit</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<a th:href="@{'/delete/' + ${album.id}}">Delete</a>
+							</td>
+							
+						</tr>
+					</tbody>
+			
+			</table>
+		</div>
+	
+	</nav>
+	</body>
+</html>
