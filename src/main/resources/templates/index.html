@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="ISO-8859-1">
 <title>Albums Management System</title>
 </head>
 <body>
 <div align="center">	
-	<div>
-		Welcome <b><span>Username</span></b>
+	<div sec:authorize="isAuthenticated()">
+		Welcome <b><span sec:autenticate="name">Username</span></b>
 		&nbsp;
-		<i><span>Roles</span></i>
+		<i><span sec:authentication="principal.authorities">Roles</span></i>
 	</div>
 		
 	<form th:action="@{/logout}" method="post">
@@ -32,7 +32,7 @@
 				<th>Label</th>
 				<th>Year</th>
 				
-				<th>Actions</th>				
+				<th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">Actions</th>				
 				
 			</tr>
 		</thead>
@@ -45,10 +45,10 @@
 				<td th:text="${album.label}">Label</td>
 				<td th:text="${album.year}">Year</td>
 				
-				<td>
+				<td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
 					<a th:href="@{'/edit/' + ${album.id}}">Edit</a>			
 					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a th:href="@{'/delete/' + ${album.id}}">Delete</a>
+					<a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{'/delete/' + ${album.id}}">Delete</a>
 				</td>
 			</tr>
 		</tbody>
