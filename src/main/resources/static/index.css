@@ -1,0 +1,15 @@
+
+.page-title {
+	text-align: center;
+}
+
+table, th, td {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.table {
+	padding-top: 50px;
+	margin: auto;
+	width: 15%;
+}
