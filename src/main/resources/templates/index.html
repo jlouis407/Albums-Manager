@@ -17,7 +17,7 @@
 	</form>
 	
 	<h1>Albums Management System</h1>
-	<div>
+	<div sec:authorize="hasAnyAuthority('EDITOR', 'ADMIN')">
 		<a href="new">Create New Album</a>
 	</div>
 	
