@@ -33,6 +33,11 @@ public class AppController {
 		return "index";
 	}
 	
+	@GetMapping("/index")
+	public String cancel() {
+		return "index";
+	}
+	
 	@RequestMapping("/new")
 	public String viewCreateAlbum(Model model) {
 		Album album = new Album();
